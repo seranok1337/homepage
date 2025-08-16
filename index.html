@@ -40,7 +40,7 @@
         const split = searchQuery.split(' ')
         const res = split.join('+')
 
-        window.location.href = baseUrl + res;
+        window.open(baseUrl + res)
     }
 
     function updateTime() {
