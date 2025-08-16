@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>New Tab</title>
 </head>
 <body>
@@ -12,46 +13,66 @@
            <div>
              <h1 id="time" class="text-2xl mt-5 font-mono">Time</h1>
            </div>
-           <div>
+           
+           <div class="flex flex-col items-center gap-6">
               <input id="search" type="text" class="border-black rounded-xl p-3 border w-2xl font-mono placeholder-black" placeholder="Google Search" />
+              
+              <div class="flex gap-4 flex-wrap justify-center">
+                  <button onclick="window.open('https://youtube.com')" class="flex flex-col items-center gap-2 p-3 bg-white hover:bg-gray-100 border border-black rounded-xl transition-colors duration-200 min-w-[70px]">
+                      <i class="fab fa-youtube text-xl text-black"></i>
+                      <span class="text-xs font-mono text-black">YouTube</span>
+                  </button>
+                  
+                  <button onclick="window.open('https://chat.openai.com')" class="flex flex-col items-center gap-2 p-3 bg-white hover:bg-gray-100 border border-black rounded-xl transition-colors duration-200 min-w-[70px]">
+                      <i class="fas fa-robot text-xl text-black"></i>
+                      <span class="text-xs font-mono text-black">ChatGPT</span>
+                  </button>
+                  
+                  <button onclick="window.open('https://claude.ai')" class="flex flex-col items-center gap-2 p-3 bg-white hover:bg-gray-100 border border-black rounded-xl transition-colors duration-200 min-w-[70px]">
+                      <i class="fas fa-brain text-xl text-black"></i>
+                      <span class="text-xs font-mono text-black">Claude</span>
+                  </button>
+                  
+                  <button onclick="window.open('http://localhost:3000')" class="flex flex-col items-center gap-2 p-3 bg-white hover:bg-gray-100 border border-black rounded-xl transition-colors duration-200 min-w-[70px]">
+                      <i class="fas fa-code text-xl text-black"></i>
+                      <span class="text-xs font-mono text-black">Dev</span>
+                  </button>
+                  
+                  <button onclick="window.open('https://reddit.com')" class="flex flex-col items-center gap-2 p-3 bg-white hover:bg-gray-100 border border-black rounded-xl transition-colors duration-200 min-w-[70px]">
+                      <i class="fab fa-reddit text-xl text-black"></i>
+                      <span class="text-xs font-mono text-black">Reddit</span>
+                  </button>
+              </div>
            </div>
+           
            <div>
                <img src="https://seranok1337.github.io/homepage/dog.webp" class="w-50" alt="dog">
            </div>                      
         </div>
     </div>
 </body>
-
 <script>
     const time = document.getElementById('time')
     const input = document.getElementById('search')
     const baseUrl = 'https://google.com/search?q='
-
     updateTime()
-
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             search()
         }
     })
-
     function search() {
         const searchQuery = input.value
         const split = searchQuery.split(' ')
         const res = split.join('+')
-
         window.open(baseUrl + res)
     }
-
     function updateTime() {
         const date = new Date()
         const hours = date.getHours(); 
         const minutes = date.getMinutes();
-
         time.innerHTML = `${hours.toLocaleString().padStart(2, 0)}:${minutes.toLocaleString()}`
     }
-
     setInterval(updateTime, 1000)
-
 </script>
 </html>
